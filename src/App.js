@@ -123,7 +123,7 @@ const LocalChecks10 = JSON.parse(localStorage.getItem("checks10")) || [];
 const DatafromDb = JSON.parse(localStorage.getItem("data")) || {};
 ///////////////////////////////// month month month month month month
 // const Lmonthly = JSON.parse(localStorage.getItem("monthly")) || [];
-const socket = io("/");
+const socket = io("https://burgerback.herokuapp.com");
 function App() {
   const [data, setData] = useState(DatafromDb);
   useEffect(() => {
