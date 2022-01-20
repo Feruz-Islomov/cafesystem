@@ -5,7 +5,7 @@ const MenuItem = (props) => {
   return (
     <div>
       <img
-        src={menu.img}
+        src={`https://burgerback.herokuapp.com/${menu.img}`}
         alt={menu.name}
         onClick={() => getMenuName(menu.name)}
       />
