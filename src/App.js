@@ -2171,17 +2171,16 @@ function App() {
   const [isAuth, login, logout] = useAuth(false);
   const [isAd, isAdmn, notAdmn] = useAdmin(false);
 
-  useEffect(() => {
-    const jtoken = Cookies.get("webtoken");
-    const admintoken = Cookies.get("admin");
-    if (jtoken) {
-      login();
-    }
-    if (admintoken) {
-      isAdmn();
-    }
-    // console.log(typeof Cookies.get("admin"));
-  });
+  // useEffect(() => {
+  //   const jtoken = Cookies.get("webtoken");
+  //   const admintoken = Cookies.get("admin");
+  //   if (jtoken) {
+  //     login();
+  //   }
+  //   if (admintoken) {
+  //     isAdmn();
+  //   }
+  // });
   const logingOut = () => {
     axios
       .get("/products/logout")
@@ -2216,7 +2215,7 @@ function App() {
         <Route
           path="/"
           render={(props) =>
-            isAuth && window.location.pathname !== "/print" ? (
+            window.location.pathname !== "/print" ? (
               <Table
                 s1={finishes.length}
                 s2={finishes2.length}
@@ -2268,470 +2267,438 @@ function App() {
           <Route
             path="/table1"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table1
-                  {...props}
-                  cartItems={cartItems}
-                  starts={starts}
-                  burgers={burgers}
-                  pizzas={pizzas}
-                  drinks={drinks}
-                  finishes={finishes}
-                  checks={checks}
-                  onAdd={onAdd}
-                  onRemove={onRemove}
-                  moveToStart={moveToStart}
-                  deleteStart={deleteStart}
-                  fromStartToKitchen={fromStartToKitchen}
-                  fromKitchenToFinish={fromKitchenToFinish}
-                  fromFinishToCheck={fromFinishToCheck}
-                  getChecks={getChecks}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table1
+                {...props}
+                cartItems={cartItems}
+                starts={starts}
+                burgers={burgers}
+                pizzas={pizzas}
+                drinks={drinks}
+                finishes={finishes}
+                checks={checks}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                moveToStart={moveToStart}
+                deleteStart={deleteStart}
+                fromStartToKitchen={fromStartToKitchen}
+                fromKitchenToFinish={fromKitchenToFinish}
+                fromFinishToCheck={fromFinishToCheck}
+                getChecks={getChecks}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table2"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table2
-                  {...props}
-                  cartItems2={cartItems2}
-                  starts2={starts2}
-                  burgers2={burgers2}
-                  pizzas2={pizzas2}
-                  drinks2={drinks2}
-                  finishes2={finishes2}
-                  checks2={checks2}
-                  onAdd2={onAdd2}
-                  onRemove2={onRemove2}
-                  moveToStart2={moveToStart2}
-                  deleteStart2={deleteStart2}
-                  fromStartToKitchen2={fromStartToKitchen2}
-                  fromKitchenToFinish2={fromKitchenToFinish2}
-                  fromFinishToCheck2={fromFinishToCheck2}
-                  getChecks2={getChecks2}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table2
+                {...props}
+                cartItems2={cartItems2}
+                starts2={starts2}
+                burgers2={burgers2}
+                pizzas2={pizzas2}
+                drinks2={drinks2}
+                finishes2={finishes2}
+                checks2={checks2}
+                onAdd2={onAdd2}
+                onRemove2={onRemove2}
+                moveToStart2={moveToStart2}
+                deleteStart2={deleteStart2}
+                fromStartToKitchen2={fromStartToKitchen2}
+                fromKitchenToFinish2={fromKitchenToFinish2}
+                fromFinishToCheck2={fromFinishToCheck2}
+                getChecks2={getChecks2}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table3"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table3
-                  {...props}
-                  cartItems3={cartItems3}
-                  starts3={starts3}
-                  burgers3={burgers3}
-                  pizzas3={pizzas3}
-                  drinks3={drinks3}
-                  finishes3={finishes3}
-                  checks3={checks3}
-                  onAdd3={onAdd3}
-                  onRemove3={onRemove3}
-                  moveToStart3={moveToStart3}
-                  deleteStart3={deleteStart3}
-                  fromStartToKitchen3={fromStartToKitchen3}
-                  fromKitchenToFinish3={fromKitchenToFinish3}
-                  fromFinishToCheck3={fromFinishToCheck3}
-                  getChecks3={getChecks3}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table3
+                {...props}
+                cartItems3={cartItems3}
+                starts3={starts3}
+                burgers3={burgers3}
+                pizzas3={pizzas3}
+                drinks3={drinks3}
+                finishes3={finishes3}
+                checks3={checks3}
+                onAdd3={onAdd3}
+                onRemove3={onRemove3}
+                moveToStart3={moveToStart3}
+                deleteStart3={deleteStart3}
+                fromStartToKitchen3={fromStartToKitchen3}
+                fromKitchenToFinish3={fromKitchenToFinish3}
+                fromFinishToCheck3={fromFinishToCheck3}
+                getChecks3={getChecks3}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table4"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table4
-                  {...props}
-                  cartItems4={cartItems4}
-                  starts4={starts4}
-                  burgers4={burgers4}
-                  pizzas4={pizzas4}
-                  drinks4={drinks4}
-                  finishes4={finishes4}
-                  checks4={checks4}
-                  onAdd4={onAdd4}
-                  onRemove4={onRemove4}
-                  moveToStart4={moveToStart4}
-                  deleteStart4={deleteStart4}
-                  fromStartToKitchen4={fromStartToKitchen4}
-                  fromKitchenToFinish4={fromKitchenToFinish4}
-                  fromFinishToCheck4={fromFinishToCheck4}
-                  getChecks4={getChecks4}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table4
+                {...props}
+                cartItems4={cartItems4}
+                starts4={starts4}
+                burgers4={burgers4}
+                pizzas4={pizzas4}
+                drinks4={drinks4}
+                finishes4={finishes4}
+                checks4={checks4}
+                onAdd4={onAdd4}
+                onRemove4={onRemove4}
+                moveToStart4={moveToStart4}
+                deleteStart4={deleteStart4}
+                fromStartToKitchen4={fromStartToKitchen4}
+                fromKitchenToFinish4={fromKitchenToFinish4}
+                fromFinishToCheck4={fromFinishToCheck4}
+                getChecks4={getChecks4}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table5"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table5
-                  {...props}
-                  cartItems5={cartItems5}
-                  starts5={starts5}
-                  burgers5={burgers5}
-                  pizzas5={pizzas5}
-                  drinks5={drinks5}
-                  finishes5={finishes5}
-                  checks5={checks5}
-                  onAdd5={onAdd5}
-                  onRemove5={onRemove5}
-                  moveToStart5={moveToStart5}
-                  deleteStart5={deleteStart5}
-                  fromStartToKitchen5={fromStartToKitchen5}
-                  fromKitchenToFinish5={fromKitchenToFinish5}
-                  fromFinishToCheck5={fromFinishToCheck5}
-                  getChecks5={getChecks5}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table5
+                {...props}
+                cartItems5={cartItems5}
+                starts5={starts5}
+                burgers5={burgers5}
+                pizzas5={pizzas5}
+                drinks5={drinks5}
+                finishes5={finishes5}
+                checks5={checks5}
+                onAdd5={onAdd5}
+                onRemove5={onRemove5}
+                moveToStart5={moveToStart5}
+                deleteStart5={deleteStart5}
+                fromStartToKitchen5={fromStartToKitchen5}
+                fromKitchenToFinish5={fromKitchenToFinish5}
+                fromFinishToCheck5={fromFinishToCheck5}
+                getChecks5={getChecks5}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table6"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table6
-                  {...props}
-                  cartItems6={cartItems6}
-                  starts6={starts6}
-                  burgers6={burgers6}
-                  pizzas6={pizzas6}
-                  drinks6={drinks6}
-                  finishes6={finishes6}
-                  checks6={checks6}
-                  onAdd6={onAdd6}
-                  onRemove6={onRemove6}
-                  moveToStart6={moveToStart6}
-                  deleteStart6={deleteStart6}
-                  fromStartToKitchen6={fromStartToKitchen6}
-                  fromKitchenToFinish6={fromKitchenToFinish6}
-                  fromFinishToCheck6={fromFinishToCheck6}
-                  getChecks6={getChecks6}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table6
+                {...props}
+                cartItems6={cartItems6}
+                starts6={starts6}
+                burgers6={burgers6}
+                pizzas6={pizzas6}
+                drinks6={drinks6}
+                finishes6={finishes6}
+                checks6={checks6}
+                onAdd6={onAdd6}
+                onRemove6={onRemove6}
+                moveToStart6={moveToStart6}
+                deleteStart6={deleteStart6}
+                fromStartToKitchen6={fromStartToKitchen6}
+                fromKitchenToFinish6={fromKitchenToFinish6}
+                fromFinishToCheck6={fromFinishToCheck6}
+                getChecks6={getChecks6}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table7"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table7
-                  {...props}
-                  cartItems7={cartItems7}
-                  starts7={starts7}
-                  burgers7={burgers7}
-                  pizzas7={pizzas7}
-                  drinks7={drinks7}
-                  finishes7={finishes7}
-                  checks7={checks7}
-                  onAdd7={onAdd7}
-                  onRemove7={onRemove7}
-                  moveToStart7={moveToStart7}
-                  deleteStart7={deleteStart7}
-                  fromStartToKitchen7={fromStartToKitchen7}
-                  fromKitchenToFinish7={fromKitchenToFinish7}
-                  fromFinishToCheck7={fromFinishToCheck7}
-                  getChecks7={getChecks7}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table7
+                {...props}
+                cartItems7={cartItems7}
+                starts7={starts7}
+                burgers7={burgers7}
+                pizzas7={pizzas7}
+                drinks7={drinks7}
+                finishes7={finishes7}
+                checks7={checks7}
+                onAdd7={onAdd7}
+                onRemove7={onRemove7}
+                moveToStart7={moveToStart7}
+                deleteStart7={deleteStart7}
+                fromStartToKitchen7={fromStartToKitchen7}
+                fromKitchenToFinish7={fromKitchenToFinish7}
+                fromFinishToCheck7={fromFinishToCheck7}
+                getChecks7={getChecks7}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table8"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table8
-                  {...props}
-                  cartItems8={cartItems8}
-                  starts8={starts8}
-                  burgers8={burgers8}
-                  pizzas8={pizzas8}
-                  drinks8={drinks8}
-                  finishes8={finishes8}
-                  checks8={checks8}
-                  onAdd8={onAdd8}
-                  onRemove8={onRemove8}
-                  moveToStart8={moveToStart8}
-                  deleteStart8={deleteStart8}
-                  fromStartToKitchen8={fromStartToKitchen8}
-                  fromKitchenToFinish8={fromKitchenToFinish8}
-                  fromFinishToCheck8={fromFinishToCheck8}
-                  getChecks8={getChecks8}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table8
+                {...props}
+                cartItems8={cartItems8}
+                starts8={starts8}
+                burgers8={burgers8}
+                pizzas8={pizzas8}
+                drinks8={drinks8}
+                finishes8={finishes8}
+                checks8={checks8}
+                onAdd8={onAdd8}
+                onRemove8={onRemove8}
+                moveToStart8={moveToStart8}
+                deleteStart8={deleteStart8}
+                fromStartToKitchen8={fromStartToKitchen8}
+                fromKitchenToFinish8={fromKitchenToFinish8}
+                fromFinishToCheck8={fromFinishToCheck8}
+                getChecks8={getChecks8}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table9"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table9
-                  {...props}
-                  cartItems9={cartItems9}
-                  starts9={starts9}
-                  burgers9={burgers9}
-                  pizzas9={pizzas9}
-                  drinks9={drinks9}
-                  finishes9={finishes9}
-                  checks9={checks9}
-                  onAdd9={onAdd9}
-                  onRemove9={onRemove9}
-                  moveToStart9={moveToStart9}
-                  deleteStart9={deleteStart9}
-                  fromStartToKitchen9={fromStartToKitchen9}
-                  fromKitchenToFinish9={fromKitchenToFinish9}
-                  fromFinishToCheck9={fromFinishToCheck9}
-                  getChecks9={getChecks9}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table9
+                {...props}
+                cartItems9={cartItems9}
+                starts9={starts9}
+                burgers9={burgers9}
+                pizzas9={pizzas9}
+                drinks9={drinks9}
+                finishes9={finishes9}
+                checks9={checks9}
+                onAdd9={onAdd9}
+                onRemove9={onRemove9}
+                moveToStart9={moveToStart9}
+                deleteStart9={deleteStart9}
+                fromStartToKitchen9={fromStartToKitchen9}
+                fromKitchenToFinish9={fromKitchenToFinish9}
+                fromFinishToCheck9={fromFinishToCheck9}
+                getChecks9={getChecks9}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/table10"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Table10
-                  {...props}
-                  cartItems10={cartItems10}
-                  starts10={starts10}
-                  burgers10={burgers10}
-                  pizzas10={pizzas10}
-                  drinks10={drinks10}
-                  finishes10={finishes10}
-                  checks10={checks10}
-                  onAdd10={onAdd10}
-                  onRemove10={onRemove10}
-                  moveToStart10={moveToStart10}
-                  deleteStart10={deleteStart10}
-                  fromStartToKitchen10={fromStartToKitchen10}
-                  fromKitchenToFinish10={fromKitchenToFinish10}
-                  fromFinishToCheck10={fromFinishToCheck10}
-                  getChecks10={getChecks10}
-                  data={data}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Table10
+                {...props}
+                cartItems10={cartItems10}
+                starts10={starts10}
+                burgers10={burgers10}
+                pizzas10={pizzas10}
+                drinks10={drinks10}
+                finishes10={finishes10}
+                checks10={checks10}
+                onAdd10={onAdd10}
+                onRemove10={onRemove10}
+                moveToStart10={moveToStart10}
+                deleteStart10={deleteStart10}
+                fromStartToKitchen10={fromStartToKitchen10}
+                fromKitchenToFinish10={fromKitchenToFinish10}
+                fromFinishToCheck10={fromFinishToCheck10}
+                getChecks10={getChecks10}
+                data={data}
+              />
+            )}
           />
           <Route
             path="/admin/:id"
             exact
-            render={(props) =>
-              isAd ? (
-                <AdminPage
-                  {...props}
-                  adminChecks1={adminChecks1}
-                  adminChecks2={adminChecks2}
-                  adminChecks3={adminChecks3}
-                  adminChecks4={adminChecks4}
-                  adminChecks5={adminChecks5}
-                  adminChecks6={adminChecks6}
-                  adminChecks7={adminChecks7}
-                  adminChecks8={adminChecks8}
-                  adminChecks9={adminChecks9}
-                  adminChecks10={adminChecks10}
-                  total1={total1}
-                  total2={total2}
-                  total3={total3}
-                  total4={total4}
-                  total5={total5}
-                  total6={total6}
-                  total7={total7}
-                  total8={total8}
-                  total9={total9}
-                  total10={total10}
-                  moveToDaily={moveToDaily}
-                  allday1={allday1}
-                  sumdata={sumdata}
-                  getCheckToPrint={getCheckToPrint}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <AdminPage
+                {...props}
+                adminChecks1={adminChecks1}
+                adminChecks2={adminChecks2}
+                adminChecks3={adminChecks3}
+                adminChecks4={adminChecks4}
+                adminChecks5={adminChecks5}
+                adminChecks6={adminChecks6}
+                adminChecks7={adminChecks7}
+                adminChecks8={adminChecks8}
+                adminChecks9={adminChecks9}
+                adminChecks10={adminChecks10}
+                total1={total1}
+                total2={total2}
+                total3={total3}
+                total4={total4}
+                total5={total5}
+                total6={total6}
+                total7={total7}
+                total8={total8}
+                total9={total9}
+                total10={total10}
+                moveToDaily={moveToDaily}
+                allday1={allday1}
+                sumdata={sumdata}
+                getCheckToPrint={getCheckToPrint}
+              />
+            )}
           />
           <Route
             path="/burgerer"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Burgerer
-                  {...props}
-                  burgers={burgers}
-                  finishes={finishes}
-                  fromKitchenToFinish={fromKitchenToFinish}
-                  burgers2={burgers2}
-                  finishes2={finishes2}
-                  fromKitchenToFinish2={fromKitchenToFinish2}
-                  burgers3={burgers3}
-                  finishes3={finishes3}
-                  fromKitchenToFinish3={fromKitchenToFinish3}
-                  burgers4={burgers4}
-                  finishes4={finishes4}
-                  fromKitchenToFinish4={fromKitchenToFinish4}
-                  burgers5={burgers5}
-                  finishes5={finishes5}
-                  fromKitchenToFinish5={fromKitchenToFinish5}
-                  burgers6={burgers6}
-                  finishes6={finishes6}
-                  fromKitchenToFinish6={fromKitchenToFinish6}
-                  burgers7={burgers7}
-                  finishes7={finishes7}
-                  fromKitchenToFinish7={fromKitchenToFinish7}
-                  burgers8={burgers8}
-                  finishes8={finishes8}
-                  fromKitchenToFinish8={fromKitchenToFinish8}
-                  burgers9={burgers9}
-                  finishes9={finishes9}
-                  fromKitchenToFinish9={fromKitchenToFinish9}
-                  burgers10={burgers10}
-                  finishes10={finishes10}
-                  fromKitchenToFinish10={fromKitchenToFinish10}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Burgerer
+                {...props}
+                burgers={burgers}
+                finishes={finishes}
+                fromKitchenToFinish={fromKitchenToFinish}
+                burgers2={burgers2}
+                finishes2={finishes2}
+                fromKitchenToFinish2={fromKitchenToFinish2}
+                burgers3={burgers3}
+                finishes3={finishes3}
+                fromKitchenToFinish3={fromKitchenToFinish3}
+                burgers4={burgers4}
+                finishes4={finishes4}
+                fromKitchenToFinish4={fromKitchenToFinish4}
+                burgers5={burgers5}
+                finishes5={finishes5}
+                fromKitchenToFinish5={fromKitchenToFinish5}
+                burgers6={burgers6}
+                finishes6={finishes6}
+                fromKitchenToFinish6={fromKitchenToFinish6}
+                burgers7={burgers7}
+                finishes7={finishes7}
+                fromKitchenToFinish7={fromKitchenToFinish7}
+                burgers8={burgers8}
+                finishes8={finishes8}
+                fromKitchenToFinish8={fromKitchenToFinish8}
+                burgers9={burgers9}
+                finishes9={finishes9}
+                fromKitchenToFinish9={fromKitchenToFinish9}
+                burgers10={burgers10}
+                finishes10={finishes10}
+                fromKitchenToFinish10={fromKitchenToFinish10}
+              />
+            )}
           />
           <Route
             path="/pizzarer"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Pizzarer
-                  {...props}
-                  pizzas={pizzas}
-                  finishes={finishes}
-                  fromKitchenToFinish={fromKitchenToFinish}
-                  pizzas2={pizzas2}
-                  finishes2={finishes2}
-                  fromKitchenToFinish2={fromKitchenToFinish2}
-                  pizzas3={pizzas3}
-                  finishes3={finishes3}
-                  fromKitchenToFinish3={fromKitchenToFinish3}
-                  pizzas4={pizzas4}
-                  finishes4={finishes4}
-                  fromKitchenToFinish4={fromKitchenToFinish4}
-                  pizzas5={pizzas5}
-                  finishes5={finishes5}
-                  fromKitchenToFinish5={fromKitchenToFinish5}
-                  pizzas6={pizzas6}
-                  finishes6={finishes6}
-                  fromKitchenToFinish6={fromKitchenToFinish6}
-                  pizzas7={pizzas7}
-                  finishes7={finishes7}
-                  fromKitchenToFinish7={fromKitchenToFinish7}
-                  pizzas8={pizzas8}
-                  finishes8={finishes8}
-                  fromKitchenToFinish8={fromKitchenToFinish8}
-                  pizzas9={pizzas9}
-                  finishes9={finishes9}
-                  fromKitchenToFinish9={fromKitchenToFinish9}
-                  pizzas10={pizzas10}
-                  finishes10={finishes10}
-                  fromKitchenToFinish10={fromKitchenToFinish10}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Pizzarer
+                {...props}
+                pizzas={pizzas}
+                finishes={finishes}
+                fromKitchenToFinish={fromKitchenToFinish}
+                pizzas2={pizzas2}
+                finishes2={finishes2}
+                fromKitchenToFinish2={fromKitchenToFinish2}
+                pizzas3={pizzas3}
+                finishes3={finishes3}
+                fromKitchenToFinish3={fromKitchenToFinish3}
+                pizzas4={pizzas4}
+                finishes4={finishes4}
+                fromKitchenToFinish4={fromKitchenToFinish4}
+                pizzas5={pizzas5}
+                finishes5={finishes5}
+                fromKitchenToFinish5={fromKitchenToFinish5}
+                pizzas6={pizzas6}
+                finishes6={finishes6}
+                fromKitchenToFinish6={fromKitchenToFinish6}
+                pizzas7={pizzas7}
+                finishes7={finishes7}
+                fromKitchenToFinish7={fromKitchenToFinish7}
+                pizzas8={pizzas8}
+                finishes8={finishes8}
+                fromKitchenToFinish8={fromKitchenToFinish8}
+                pizzas9={pizzas9}
+                finishes9={finishes9}
+                fromKitchenToFinish9={fromKitchenToFinish9}
+                pizzas10={pizzas10}
+                finishes10={finishes10}
+                fromKitchenToFinish10={fromKitchenToFinish10}
+              />
+            )}
           />
           <Route
             path="/drinker"
             exact
-            render={(props) =>
-              isAuth ? (
-                <Drinker
-                  {...props}
-                  drinks={drinks}
-                  finishes={finishes}
-                  fromKitchenToFinish={fromKitchenToFinish}
-                  drinks2={drinks2}
-                  finishes2={finishes2}
-                  fromKitchenToFinish2={fromKitchenToFinish2}
-                  drinks3={drinks3}
-                  finishes3={finishes3}
-                  fromKitchenToFinish3={fromKitchenToFinish3}
-                  drinks4={drinks4}
-                  finishes4={finishes4}
-                  fromKitchenToFinish4={fromKitchenToFinish4}
-                  drinks5={drinks5}
-                  finishes5={finishes5}
-                  fromKitchenToFinish5={fromKitchenToFinish5}
-                  drinks6={drinks6}
-                  finishes6={finishes6}
-                  fromKitchenToFinish6={fromKitchenToFinish6}
-                  drinks7={drinks7}
-                  finishes7={finishes7}
-                  fromKitchenToFinish7={fromKitchenToFinish7}
-                  drinks8={drinks8}
-                  finishes8={finishes8}
-                  fromKitchenToFinish8={fromKitchenToFinish8}
-                  drinks9={drinks9}
-                  finishes9={finishes9}
-                  fromKitchenToFinish9={fromKitchenToFinish9}
-                  drinks10={drinks10}
-                  finishes10={finishes10}
-                  fromKitchenToFinish10={fromKitchenToFinish10}
-                />
-              ) : null
-            }
+            render={(props) => (
+              <Drinker
+                {...props}
+                drinks={drinks}
+                finishes={finishes}
+                fromKitchenToFinish={fromKitchenToFinish}
+                drinks2={drinks2}
+                finishes2={finishes2}
+                fromKitchenToFinish2={fromKitchenToFinish2}
+                drinks3={drinks3}
+                finishes3={finishes3}
+                fromKitchenToFinish3={fromKitchenToFinish3}
+                drinks4={drinks4}
+                finishes4={finishes4}
+                fromKitchenToFinish4={fromKitchenToFinish4}
+                drinks5={drinks5}
+                finishes5={finishes5}
+                fromKitchenToFinish5={fromKitchenToFinish5}
+                drinks6={drinks6}
+                finishes6={finishes6}
+                fromKitchenToFinish6={fromKitchenToFinish6}
+                drinks7={drinks7}
+                finishes7={finishes7}
+                fromKitchenToFinish7={fromKitchenToFinish7}
+                drinks8={drinks8}
+                finishes8={finishes8}
+                fromKitchenToFinish8={fromKitchenToFinish8}
+                drinks9={drinks9}
+                finishes9={finishes9}
+                fromKitchenToFinish9={fromKitchenToFinish9}
+                drinks10={drinks10}
+                finishes10={finishes10}
+                fromKitchenToFinish10={fromKitchenToFinish10}
+              />
+            )}
           />
           <Route
             path="/productpage/:id"
             exact
-            render={(props) =>
-              isAd ? (
-                <ProductPage {...props} data={data} showthat={showthat} />
-              ) : null
-            }
+            render={(props) => (
+              <ProductPage {...props} data={data} showthat={showthat} />
+            )}
           />
           <Route
             path="/editmenuitem"
             exact
-            render={(props) =>
-              isAd ? <ProductEdit {...props} showthat={showthat} /> : null
-            }
+            render={(props) => <ProductEdit {...props} showthat={showthat} />}
           />
           <Route
             path="/editmenu"
             exact
-            render={(props) =>
-              isAd ? <ProductMenuEdit {...props} showthat={showthat} /> : null
-            }
+            render={(props) => (
+              <ProductMenuEdit {...props} showthat={showthat} />
+            )}
           />
           <Route
             path="/signup"
             exact
-            render={(props) =>
-              isAd ? <Signup {...props} login={login} isAdmn={isAdmn} /> : null
-            }
+            render={(props) => (
+              <Signup {...props} login={login} isAdmn={isAdmn} />
+            )}
           />
-          <Route
+          {/* <Route
             path="/login"
             exact
             render={(props) => (
               <Login {...props} login={login} isAdmn={isAdmn} />
             )}
-          />
+          /> */}
         </Switch>
-        {!isAuth ? (
+        {/* {!isAuth ? (
           <Link to="/login">
             <button>login</button>
           </Link>
@@ -2739,7 +2706,7 @@ function App() {
           <Link to="/">
             <button onClick={logingOut}>logout</button>
           </Link>
-        ) : null}
+        ) : null} */}
       </BrowserRouter>
     </div>
   );
