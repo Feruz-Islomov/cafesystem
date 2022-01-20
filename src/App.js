@@ -131,37 +131,49 @@ function App() {
   }, [data]);
   const showthat = async () => {
     try {
-      const { data } = await axios.get("/products/1");
+      const { data } = await axios.get(
+        "https://burgerback.herokuapp.com/products/1"
+      );
       var McProducts = data;
     } catch (err) {
       console.log(err);
     }
     try {
-      const { data } = await axios.get("/products/2");
+      const { data } = await axios.get(
+        "https://burgerback.herokuapp.com/products/2"
+      );
       var KfcProducts = data;
     } catch (err) {
       console.log(err);
     }
     try {
-      const { data } = await axios.get("/products/3");
+      const { data } = await axios.get(
+        "https://burgerback.herokuapp.com/products/3"
+      );
       var PizzaProducts = data;
     } catch (err) {
       console.log(err);
     }
     try {
-      const { data } = await axios.get("/products/4");
+      const { data } = await axios.get(
+        "https://burgerback.herokuapp.com/products/4"
+      );
       var DrinksProducts = data;
     } catch (err) {
       console.log(err);
     }
     try {
-      const { data } = await axios.get("/products/5");
+      const { data } = await axios.get(
+        "https://burgerback.herokuapp.com/products/5"
+      );
       var BuggetBurgersProducts = data;
     } catch (err) {
       console.log(err);
     }
     try {
-      const { data } = await axios.get("/products/6");
+      const { data } = await axios.get(
+        "https://burgerback.herokuapp.com/products/6"
+      );
       var Menu = data;
     } catch (err) {
       console.log(err);
@@ -2149,7 +2161,7 @@ function App() {
     setAdminChecks9([]);
     setAdminChecks10([]);
     axios
-      .post("/api/sum", { d: day })
+      .post("https://burgerback.herokuapp.com/api/sum", { d: day })
       .then((res) => {
         showSums();
       })
@@ -2158,7 +2170,7 @@ function App() {
   const [sumdata, setSumData] = useState([]);
   const showSums = () => {
     axios
-      .get("/products/dailysum")
+      .get("https://burgerback.herokuapp.com/products/dailysum")
       .then((res) => setSumData(res.data))
       .catch((err) => console.log(err));
   };
@@ -2183,7 +2195,7 @@ function App() {
   // });
   const logingOut = () => {
     axios
-      .get("/products/logout")
+      .get("https://burgerback.herokuapp.com/products/logout")
       .then((res) => {
         logout();
         notAdmn();
