@@ -8,7 +8,7 @@ import Table7 from "./tables/Table7";
 import Table8 from "./tables/Table8";
 import Table9 from "./tables/Table9";
 import Table10 from "./tables/Table10";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Table from "./components/Table";
 import { useEffect, useRef, useState } from "react";
 import AdminPage from "./components/AdminPage";
@@ -23,11 +23,10 @@ import ProductPage from "./components/ProductPage";
 import ProductEdit from "./components/ProductEdit";
 import ProductMenuEdit from "./components/ProductMenuEdit";
 import Signup from "./components/Signup";
-import Login from "./components/Login";
-import useAuth from "./useAuth";
-import Cookies from "js-cookie";
-import useAdmin from "./useAd";
+// import Cookies from "js-cookie";
 import PrintCheck from "./components/PrintCheck";
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./components/Login";
 
 const Lchecks1 = JSON.parse(localStorage.getItem("checksAdmin1")) || [];
 const Lchecks2 = JSON.parse(localStorage.getItem("checksAdmin2")) || [];
@@ -2180,30 +2179,7 @@ function App() {
   ////////////////authentication/////////////////////////////////
   ////////////////authentication/////////////////////////////////
   ////////////////authentication/////////////////////////////////
-  const [isAuth, login, logout] = useAuth(false);
-  const [isAd, isAdmn, notAdmn] = useAdmin(false);
 
-  // useEffect(() => {
-  //   const jtoken = Cookies.get("webtoken");
-  //   const admintoken = Cookies.get("admin");
-  //   if (jtoken) {
-  //     login();
-  //   }
-  //   if (admintoken) {
-  //     isAdmn();
-  //   }
-  // });
-  const logingOut = () => {
-    axios
-      .get("https://burgerback.herokuapp.com/products/logout")
-      .then((res) => {
-        logout();
-        notAdmn();
-        Cookies.remove("webtoken");
-        Cookies.remove("admin");
-      })
-      .catch((err) => console.log(err));
-  };
   const printFromLocal = JSON.parse(localStorage.getItem("prints")) || [];
   const numFromLocal = JSON.parse(localStorage.getItem("num")) || [];
   const [print, setPrint] = useState(printFromLocal);
@@ -2526,10 +2502,10 @@ function App() {
               />
             )}
           />
-          <Route
+          <ProtectedRoute
             path="/admin/:id"
             exact
-            render={(props) => (
+            component={(props) => (
               <AdminPage
                 {...props}
                 adminChecks1={adminChecks1}
@@ -2676,49 +2652,34 @@ function App() {
               />
             )}
           />
-          <Route
+          <Route path="/login" exact component={Login} />
+          <ProtectedRoute
             path="/productpage/:id"
             exact
-            render={(props) => (
+            component={(props) => (
               <ProductPage {...props} data={data} showthat={showthat} />
             )}
           />
-          <Route
+          <ProtectedRoute
             path="/editmenuitem"
             exact
-            render={(props) => <ProductEdit {...props} showthat={showthat} />}
+            component={(props) => (
+              <ProductEdit {...props} showthat={showthat} />
+            )}
           />
-          <Route
+          <ProtectedRoute
             path="/editmenu"
             exact
-            render={(props) => (
+            component={(props) => (
               <ProductMenuEdit {...props} showthat={showthat} />
             )}
           />
-          <Route
+          <ProtectedRoute
             path="/signup"
             exact
-            render={(props) => (
-              <Signup {...props} login={login} isAdmn={isAdmn} />
-            )}
+            component={(props) => <Signup {...props} />}
           />
-          {/* <Route
-            path="/login"
-            exact
-            render={(props) => (
-              <Login {...props} login={login} isAdmn={isAdmn} />
-            )}
-          /> */}
         </Switch>
-        {/* {!isAuth ? (
-          <Link to="/login">
-            <button>login</button>
-          </Link>
-        ) : window.location.pathname !== "/print" ? (
-          <Link to="/">
-            <button onClick={logingOut}>logout</button>
-          </Link>
-        ) : null} */}
       </BrowserRouter>
     </div>
   );

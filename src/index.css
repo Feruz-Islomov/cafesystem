@@ -250,12 +250,12 @@ button:first-child {
   font-weight: bold;
   width: 250px;
 }
-.check {
-  /* background-color: rgb(207, 188, 201); */
+/* .check {
+  background-color: rgb(207, 188, 201);
 }
 .total {
-  /* background-color: tomato; */
-}
+  background-color: tomato;
+} */
 .admin {
   margin-bottom: 10px;
 }

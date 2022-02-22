@@ -32,7 +32,6 @@ const ProductScreen = (props) => {
       <div className="productsContainer">
         <div className="menu">
           <div data-aos="slide-down">
-            {/* <div data-aos="slide-down"> */}
             {menus ? (
               menus.map((menu) => {
                 return (
@@ -50,7 +49,6 @@ const ProductScreen = (props) => {
         </div>
 
         <div className="menuItems aos">
-          {/* <div className="menuItems" data-aos="slide-left"> */}
           <div className="menuItems" data-aos="slide-left">
             {Mcproducts && (menuName === menus[0].name || menuName === "")
               ? Mcproducts.map((product) => {

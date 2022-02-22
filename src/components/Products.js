@@ -1,13 +1,11 @@
 import React from "react";
+import { url } from "./Api";
 
 const Products = (props) => {
   const { product, onAdd } = props;
   return (
     <div className="menuItemCart">
-      <img
-        src={`https://burgerback.herokuapp.com/${product.img}`}
-        alt={product.name}
-      />
+      <img src={url + product.img} alt={product.name} />
       <div>
         {product.name} <br />${product.price}
       </div>

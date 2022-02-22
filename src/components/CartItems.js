@@ -1,4 +1,5 @@
 import React from "react";
+import { url } from "./Api";
 
 const CartItems = (props) => {
   const { cartItems, onAdd, onRemove, moveToStart } = props;
@@ -28,11 +29,7 @@ const CartItems = (props) => {
                         ></i>
                       </button>
                     </div>
-                    {/* <img src={item.img} alt="img" /> */}
-                    <img
-                      src={`https://burgerback.herokuapp.com/${item.img}`}
-                      alt="img"
-                    />
+                    <img src={url + item.img} alt="img" />
                     <h3>{item.name}</h3>
                   </div>
                   <div className="orderRight">

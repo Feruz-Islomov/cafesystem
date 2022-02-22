@@ -1,21 +1,26 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import Auth from "./Auth";
 
-const ProtectedRoute = ({ auth, component: Component, ...rest }) => {
+export const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
-    <div>
-      <Route
-        {...rest}
-        render={(props) => {
-          if (auth) return <Component {...props} />;
-          if (!auth) {
-            return (
-              <Redirect to={{ path: "/", state: { from: props.location } }} />
-            );
-          }
-        }}
-      />
-    </div>
+    <Route
+      {...rest}
+      render={(props) => {
+        if (Auth.isAuthenticated() === true) {
+          return <Component {...props} />;
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: "/table1",
+                state: { from: props.location },
+              }}
+            />
+          );
+        }
+      }}
+    />
   );
 };
 

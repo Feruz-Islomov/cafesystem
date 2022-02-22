@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useRef, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { url } from "./Api";
 
 const ProductPage = (props) => {
   const { data, showthat } = props;
@@ -59,11 +60,7 @@ const ProductPage = (props) => {
             <div className="categoryItem">
               <img
                 className="imgEditabla"
-                src={
-                  data.Menu
-                    ? `https://burgerback.herokuapp.com/${data.Menu[0].img}`
-                    : null
-                }
+                src={data.Menu ? `${url + data.Menu[0].img}` : null}
                 alt="name"
               />
               <h3>{data.Menu ? data.Menu[0].name : null}</h3>
@@ -84,7 +81,7 @@ const ProductPage = (props) => {
                         <div className="mid">
                           <img
                             className="imgEditabla"
-                            src={`https://burgerback.herokuapp.com/${item.img}`}
+                            src={url + item.img}
                             alt={item.name}
                           />
                           <h3>{item.name}</h3>
@@ -117,11 +114,7 @@ const ProductPage = (props) => {
             <div className="categoryItem">
               <img
                 className="imgEditabla"
-                src={
-                  data.Menu
-                    ? `https://burgerback.herokuapp.com/${data.Menu[1].img}`
-                    : null
-                }
+                src={data.Menu ? `${url + data.Menu[1].img}` : null}
                 alt="name"
               />
               <h3>{data.Menu ? data.Menu[1].name : null}</h3>
@@ -142,7 +135,7 @@ const ProductPage = (props) => {
                         <div className="mid">
                           <img
                             className="imgEditabla"
-                            src={`https://burgerback.herokuapp.com/${item.img}`}
+                            src={url + item.img}
                             alt={item.name}
                           />
                           <h3>{item.name}</h3>
@@ -175,11 +168,7 @@ const ProductPage = (props) => {
             <div className="categoryItem">
               <img
                 className="imgEditabla"
-                src={
-                  data.Menu
-                    ? `https://burgerback.herokuapp.com/${data.Menu[2].img}`
-                    : null
-                }
+                src={data.Menu ? `${url + data.Menu[2].img}` : null}
                 alt="name"
               />
               <h3>{data.Menu ? data.Menu[2].name : null}</h3>
@@ -198,10 +187,9 @@ const ProductPage = (props) => {
                     return (
                       <div key={index} className="EachProductItem">
                         <div className="mid">
-                          {" "}
                           <img
                             className="imgEditabla"
-                            src={`https://burgerback.herokuapp.com/${item.img}`}
+                            src={url + item.img}
                             alt={item.name}
                           />
                           <h3>{item.name}</h3>
@@ -234,11 +222,7 @@ const ProductPage = (props) => {
             <div className="categoryItem">
               <img
                 className="imgEditabla"
-                src={
-                  data.Menu
-                    ? `https://burgerback.herokuapp.com/${data.Menu[3].img}`
-                    : null
-                }
+                src={data.Menu ? `${url + data.Menu[3].img}` : null}
                 alt="name"
               />
               <h3>{data.Menu ? data.Menu[3].name : null}</h3>
@@ -257,10 +241,9 @@ const ProductPage = (props) => {
                     return (
                       <div key={index} className="EachProductItem">
                         <div className="mid">
-                          {" "}
                           <img
                             className="imgEditabla"
-                            src={`https://burgerback.herokuapp.com/${item.img}`}
+                            src={url + item.img}
                             alt={item.name}
                           />
                           <h3>{item.name}</h3>
@@ -293,11 +276,7 @@ const ProductPage = (props) => {
             <div className="categoryItem">
               <img
                 className="imgEditabla"
-                src={
-                  data.Menu
-                    ? `https://burgerback.herokuapp.com/${data.Menu[4].img}`
-                    : null
-                }
+                src={data.Menu ? `${url + data.Menu[4].img}` : null}
                 alt="name"
               />
               <h3>{data.Menu ? data.Menu[4].name : null}</h3>
@@ -318,7 +297,7 @@ const ProductPage = (props) => {
                         <div className="mid">
                           <img
                             className="imgEditabla"
-                            src={`https://burgerback.herokuapp.com/${item.img}`}
+                            src={url + item.img}
                             alt={item.name}
                           />
                           <h3>{item.name}</h3>

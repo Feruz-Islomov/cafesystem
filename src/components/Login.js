@@ -2,9 +2,10 @@ import Axios from "axios";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router";
+import Auth from "../Auth";
 
 const Login = (props) => {
-  const { login, isAdmn } = props;
+  const { login } = props;
   const history = useHistory();
 
   const [name, setName] = useState("");
@@ -20,15 +21,17 @@ const Login = (props) => {
 
     Axios.post("/api/user/login", loginForm)
       .then((res) => {
-        Cookies.set("webtoken", res.data.token);
+        Cookies.set("bjwt", res.data.token);
+        Auth.login(() => {
+          localStorage.setItem("bjwt", JSON.stringify(res.data.token));
+        });
         setName("");
         setPassword("");
         history.push("/");
         login();
-        if (res.data.isAdmin === true) {
-          isAdmn();
-          Cookies.set("admin", res.data.token);
-        }
+        // if (res.data.isAdmin === true) {
+        //   Cookies.set("admin", res.data.token);
+        // }
       })
       .catch((err) => setEr("Mavjud emas"));
   };

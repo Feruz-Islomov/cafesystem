@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Auth from "../Auth";
 
 const Table = (props) => {
+  const auth = Auth.isAuthenticated();
+  const history = useHistory();
   const {
     s1,
     s2,
@@ -88,9 +91,24 @@ const Table = (props) => {
       <Link className="table" to="/table10">
         <div>10{s10 > 0 ? <sup>{s10}</sup> : null}</div>
       </Link>
-      <Link className="table" to="/admin/:id">
-        <div>ad</div>
-      </Link>
+      {auth ? (
+        <>
+          <Link className="table" to="/admin/:id">
+            <div>ad</div>
+          </Link>
+          <Link
+            className="table"
+            to="/table1"
+            onClick={() => Auth.logout(() => localStorage.removeItem("bjwt"))}
+          >
+            <div>out</div>
+          </Link>
+        </>
+      ) : !auth ? (
+        <Link className="table" to="/login">
+          <div>ad</div>
+        </Link>
+      ) : null}
       <Link className="table " to="/burgerer">
         <div>bg{blar > 0 ? <sup className="bsup">{blar}</sup> : null}</div>
       </Link>
@@ -100,6 +118,11 @@ const Table = (props) => {
       <Link className="table " to="/drinker">
         <div>dr{dlar > 0 ? <sup className="bsup">{dlar}</sup> : null}</div>
       </Link>
+      {/* {Auth.isAuthenticated() === true ? (
+        <button onClick={() => Auth.logout(() => {})}>logout</button>
+      ) : (
+        <button onClick={() => Auth.login(() => {})}>login</button>
+      )} */}
     </div>
   );
 };
