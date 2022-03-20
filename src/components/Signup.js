@@ -1,10 +1,9 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import { useHistory } from "react-router";
 
 const Signup = (props) => {
-  const { login, isAdmn } = props;
+  // const { login, isAdmn } = props;
   const history = useHistory();
   const [name, setName] = useState("");
   const [isAdmin, setIsAdmin] = useState("");
@@ -13,13 +12,17 @@ const Signup = (props) => {
   const [users, setUsers] = useState([]);
   const upload = (e) => {
     e.preventDefault();
-    const signForm = {
-      name: name,
-      password: password,
-      isAdmin: isAdmin,
-    };
+    // const signForm = {
+    //   name: name,
+    //   password: password,
+    //   isAdmin: isAdmin,
+    // };
     if (password === confirmPassword) {
-      Axios.post("/api/user/signup", signForm)
+      Axios.post("/api/user/signup", {
+        name: name,
+        password: password,
+        isAdmin: isAdmin,
+      })
         .then((res) => {
           console.log(res);
           setName("");
@@ -27,13 +30,8 @@ const Signup = (props) => {
           setConfirmPassword("");
           setIsAdmin("");
           recieveUser();
-          login();
-          if (isAdmin === true) {
-            isAdmn();
-            Cookies.set("admin", res.data.token);
-          }
         })
-        .catch((err) => console.log(`${err} Yuz berdi`));
+        .catch((err) => console.log(`${err + isAdmin} Yuz berdi`));
     } else {
       console.log("confirm password");
       setPassword("");

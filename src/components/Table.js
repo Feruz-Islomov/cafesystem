@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Auth from "../Auth";
 
 const Table = (props) => {
   const auth = Auth.isAuthenticated();
-  const history = useHistory();
+  // const history = useHistory();
   const {
     s1,
     s2,
@@ -94,19 +94,23 @@ const Table = (props) => {
       {auth ? (
         <>
           <Link className="table" to="/admin/:id">
-            <div>ad</div>
+            <div>
+              <i className="fas fa-lock-open"></i>
+            </div>
           </Link>
           <Link
             className="table"
             to="/table1"
             onClick={() => Auth.logout(() => localStorage.removeItem("bjwt"))}
           >
-            <div>out</div>
+            <div>
+              <i className="fas fa-lock"></i>
+            </div>
           </Link>
         </>
       ) : !auth ? (
         <Link className="table" to="/login">
-          <div>ad</div>
+          <div>log</div>
         </Link>
       ) : null}
       <Link className="table " to="/burgerer">
