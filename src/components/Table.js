@@ -91,7 +91,12 @@ const Table = (props) => {
       <Link className="table" to="/table10">
         <div>10{s10 > 0 ? <sup>{s10}</sup> : null}</div>
       </Link>
-      {auth ? (
+      <Link className="table" to="/admin/:id">
+        <div>
+          <i className="fas fa-lock-open"></i>
+        </div>
+      </Link>
+      {/* {auth ? (
         <>
           <Link className="table" to="/admin/:id">
             <div>
@@ -112,7 +117,7 @@ const Table = (props) => {
         <Link className="table" to="/login">
           <div>log</div>
         </Link>
-      ) : null}
+      ) : null} */}
       <Link className="table " to="/burgerer">
         <div>bg{blar > 0 ? <sup className="bsup">{blar}</sup> : null}</div>
       </Link>
